@@ -1,0 +1,62 @@
+srrmorfuhe5igqbtfelba5hx2c36q6rb6flekixnzveglivxd3sa
+
+
+
+
+az400m03l03a-pool
+Azure Pass - Sponsorship
+15e5edde-e73b-40e6-912c-d35434d42140
+
+az ad sp create-for-rbac --name GH-Action-eshoponweb --role contributor --scopes /subscriptions/15e5edde-e73b-40e6-912c-d35434d42140/resourceGroups/rg-az400-eshoponweb-yong --sdk-auth
+
+
+{
+  "clientId": "27dac426-aa75-467d-8269-9287e733c8d1",
+  "clientSecret": "PS18Q~4OOvJrmu-uUZmMN5mXkqh_2nOTMSkHvdos",
+  "subscriptionId": "15e5edde-e73b-40e6-912c-d35434d42140",
+  "tenantId": "43863b5e-8f0c-4bba-99c7-33db3f3d5350",
+  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+  "resourceManagerEndpointUrl": "https://management.azure.com/",
+  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+  "galleryEndpointUrl": "https://gallery.azure.com/",
+  "managementEndpointUrl": "https://management.core.windows.net/"
+}
+
+az ad sp create-for-rbac --name sp-az400-azdo --role contributor --scopes /subscriptions/$subscriptionId
+
+{
+  "appId": "dcb7613a-1675-40fd-9873-9d3ca6bf3873",
+  "displayName": "sp-az400-azdo",
+  "password": "iuW8Q~efNaRrMBayktuAVbMUBXGMwRyRPgSlacf5",
+  "tenant": "43863b5e-8f0c-4bba-99c7-33db3f3d5350"
+}
+
+spId=$(az ad sp list --display-name sp-az400-azdo --query "[].id" --output tsv)
+echo $spId
+roleName=$(az role definition list --name "User Access Administrator" --query "[0].name" --output tsv)
+echo $roleName
+
+476c70dd-65d5-4aa8-bc88-1564fb2bfbad
+18d7d88d-d35e-4fb5-a5c3-7773c20a72d9
+
+az role assignment create --assignee $spId --role $roleName --resource-group "rg-az400-container-yong"
+
+{
+  "condition": null,
+  "conditionVersion": null,
+  "createdBy": null,
+  "createdOn": "2023-08-02T01:19:03.807717+00:00",
+  "delegatedManagedIdentityResourceId": null,
+  "description": null,
+  "id": "/subscriptions/15e5edde-e73b-40e6-912c-d35434d42140/resourceGroups/rg-az400-container-yong/providers/Microsoft.Authorization/roleAssignments/f6d54482-21cb-45a6-9ae6-6f86c3a75ebf",
+  "name": "f6d54482-21cb-45a6-9ae6-6f86c3a75ebf",
+  "principalId": "476c70dd-65d5-4aa8-bc88-1564fb2bfbad",
+  "principalType": "ServicePrincipal",
+  "resourceGroup": "rg-az400-container-yong",
+  "roleDefinitionId": "/subscriptions/15e5edde-e73b-40e6-912c-d35434d42140/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+  "scope": "/subscriptions/15e5edde-e73b-40e6-912c-d35434d42140/resourceGroups/rg-az400-container-yong",
+  "type": "Microsoft.Authorization/roleAssignments",
+  "updatedBy": "64c85e41-995f-49ea-ae84-946112280729",
+  "updatedOn": "2023-08-02T01:19:04.029722+00:00"
+}
